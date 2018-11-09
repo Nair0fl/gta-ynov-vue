@@ -1,0 +1,103 @@
+<div id="secure" style="width:100%">
+      <b-row>
+
+        <h1>Bonjour {{user.firstname +" "+ user.lastname}}</h1>
+            <b-col cols="12">
+      <b-card no-body>
+
+  <b-tabs>
+  <b-tab  title="Informations Personnelles" active>
+    <div>
+    <b-form>
+      <b-form-group id="mailAdresseLabel"
+                    label="Email address:"
+                    label-for="mailAdresseInput"
+                    description="We'll never share your email with anyone else.">
+        <b-form-input id="mailAdresseInput"
+                      type="email"
+                      v-model="user.mail"
+                      required
+                      placeholder="Enter email">
+        </b-form-input>
+      </b-form-group>
+      <b-form-group id="AdresseLabel"
+                    label="Adresse:"
+                    label-for="AdresseInput">
+        <b-form-input id="AdresseInput"
+                      type="text"
+                      v-model="user.adress.street"
+                      required
+                      placeholder="Enter rue">
+        </b-form-input>
+      </b-form-group>
+            <b-form-group id="ZipCodeLabel"
+                    label="ZipCode:"
+                    label-for="ZipCodeInput">
+        <b-form-input id="ZipCodeInput"
+                      type="text"
+                      v-model="user.adress.zipCode"
+                      required
+                      placeholder="Enter rue">
+        </b-form-input>
+      </b-form-group>
+            <b-form-group id="numberLabel"
+                    label="number:"
+                    label-for="numberInput">
+        <b-form-input id="numberInput"
+                      type="text"
+                      v-model="user.adress.number"
+                      required
+                      placeholder="Enter rue">
+        </b-form-input>
+      </b-form-group>
+      <b-form-group id="telLabel"
+                    label="Téléphone :"
+                    label-for="telInput">
+        <b-form-input id="telInput"
+                      v-model="user.tel">
+        </b-form-input>
+      </b-form-group>
+      <b-button type="submit" variant="primary">Submit</b-button>
+    </b-form>
+  </div>
+  </b-tab>
+  <b-tab title="Planning" >
+	<full-calendar cols="8" :config="config" :events="events"/>
+ </b-tab>
+  <b-tab title="Tableau de Bord">
+      <b-form-select v-model="selectedContract" class="mb-3">
+      <option v-for="(contrat) in contracts" v-bind:key = "contrat.id" :value="{id:contrat.id,startDate:contrat.startDate,endDate:contrat.endDate,weeklyHour:contrat.weeklyHour}"> 
+        Contract {{contrat.id}}
+      </option>
+      </b-form-select>
+      <p>Solde de Congé : {{soldeConge}} jour(s)</p>
+     <p>Contrat</p>
+     <div v-if="selectedContract">
+    <p>Date debut : {{selectedContract.startDate}}</p>
+      <p>Date fin : {{selectedContract.endDate}}</p>
+     <p>Heure hebdomadaires : {{selectedContract.weeklyHour}}</p>
+     </div>
+
+    <p>Contrat Actuel</p>
+     <div v-if="currentContrat">
+    <p>Date debut : {{currentContrat.startDate}}</p>
+      <p>Date fin : {{currentContrat.endDate}}</p>
+     <p>Heure hebdomadaires : {{currentContrat.weeklyHour}}</p>
+     </div>
+  </b-tab>
+    <b-tab title="Demande">
+      <b-form-group label="Radios using sub-components">
+      <b-form-radio-group id="radios2" v-model="selectedTypeDemande" name="radioSubComponent">
+        <b-form-radio value="conge">Congé payé</b-form-radio>
+        <b-form-radio value="recup">Récupération de temps de travail </b-form-radio>
+        <b-form-radio value="amenagement ">Aménagement d’horaire</b-form-radio>
+      </b-form-radio-group>
+    </b-form-group>
+    </b-tab>
+</b-tabs>
+      </b-card >
+
+</b-col>
+    </b-row>
+
+    </div>

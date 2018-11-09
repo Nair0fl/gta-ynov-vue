@@ -1,53 +1,47 @@
 <template>
     <div id="login">
         <h1>Login</h1>
-        <input type="text" name="username" v-model="input.username" placeholder="Username" />
-        <input type="password" name="password" v-model="input.password" placeholder="Password" />
-        <button type="button" v-on:click="login()">Login</button>
+        <b-form >
+            <b-form-input v-model="input.username" type="text" placeholder="Username"></b-form-input>
+            <b-form-input type="password" name="password" v-model="input.password" placeholder="Password"></b-form-input>
+            <b-button v-on:click="login()">Login</b-button>
+        </b-form>
     </div>
 </template>
 
 <script>
-import router from '../router'
- import json from '../../data/users.json'
+import router from "../router";
+import json from "../../data/users.json";
 
-    export default {
-        name: 'Login',
-        router,
-        json,
-        data() {
-            return {
-                input: {
-                    username: "",
-                    password: ""
-                }
-            }
-        },
-        methods: {
-            login() {
-              console.log(json)
-                if(this.input.username != "" && this.input.password != "") {
-                    if(this.input.username == json.users[0].lastname && this.input.password ==json.users[0].password) {
-                        this.$emit("authenticated", true);
-                        this.$router.replace({ name: "secure" });
-                    } else {
-                        console.log("The username and / or password is incorrect");
-                    }
-                } else {
-                    console.log("A username and password must be present");
-                }
-            }
+export default {
+  name: "Login",
+  router,
+  json,
+  data() {
+    return {
+      input: {
+        username: "",
+        password: ""
+      }
+    };
+  },
+  methods: {
+    login() {
+      if (this.input.username != "" && this.input.password != "") {
+        for (var jsonindex in json.users) {
+          if (
+            this.input.username === json.users[jsonindex].lastname &&
+            this.input.password === json.users[jsonindex].password
+          ) {
+            this.$emit("authenticated", true);
+            this.$parent.iduser= json.users[jsonindex].id;
+            this.$router.replace({ name: json.users[jsonindex].type + "" });
+          } 
         }
+      } else {
+        alert("A username and password must be present");
+      }
     }
+  }
+};
 </script>
-
-<style scoped>
-    #login {
-        width: 500px;
-        border: 1px solid #CCCCCC;
-        background-color: #FFFFFF;
-        margin: auto;
-        margin-top: 200px;
-        padding: 20px;
-    }
-</style>

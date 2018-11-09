@@ -1,26 +1,9 @@
-# gta-ynov-vue
+Jeudi 08/11/2018
 
-## Project setup
-```
-npm install
-```
+Objectifs journaliers :
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Réalisation des modèles de données du Salarié en simulant des réponses json à des requêtes API
+Réalisation de la page Salarié
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
+Bilan du soir :
+Modèles de données fait, plus réalisation de la page du salarié bien avancée, les demandes de congés... n'ont pas été implémenter.

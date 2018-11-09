@@ -1,0 +1,15 @@
+{  
+            "id":"s1",
+            "firstname":"florian",
+            "lastname":"Boche",
+            "type":"Salaried",
+            "birthDate":"17/12/1996",
+            "adress":{
+                "zipCode":"44000",
+                "street": "rue du haut moreau",
+                "number":"36"
+            },
+            "mail":"florian.boche@ynov.com",
+            "tel":"0633891640",
+            "password":"testeur"
+        }
