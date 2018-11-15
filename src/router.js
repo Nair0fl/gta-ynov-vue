@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import ConnexionComponent from "./components/Connexion.vue"
-import SalariedZoneComponent from "./components/SalariedZone.vue"
-import ManagerZoneComponent from "./components/ManagerZone.vue"
-import DrhZoneComponent from "./components/DrhZone.vue"
+import ConnexionComponent from "./vue/Connexion.vue"
+import SalariedZoneComponent from "./vue/SalariedZone.vue"
+import ManagerZoneComponent from "./vue/ManagerZone.vue"
+import DrhZoneComponent from "./vue/DrhZone.vue"
 
 
 Vue.use(Router)

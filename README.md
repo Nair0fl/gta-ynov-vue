@@ -7,3 +7,9 @@ Réalisation de la page Salarié
 
 Bilan du soir :
 Modèles de données fait, plus réalisation de la page du salarié bien avancée, les demandes de congés... n'ont pas été implémenter.
+
+Vendredi 09/11/2018
+Fin de l'implémentation du calendrier avec les heures faites, les absences/congés
+Bilan :
+Fin de l'implémentation du calendrier avec les heures faites, les absences/congés
+et debut implémentation des demandes

@@ -5,6 +5,8 @@ import FullCalendar from 'vue-full-calendar'
 Vue.use(FullCalendar)
 
 
+// make sure we can use it in our components
+
 
 new Vue({
   render: h => h(App),
