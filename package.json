@@ -12,6 +12,7 @@
     "dayspan-vuetify": "^0.3.6",
     "file-system": "^2.2.2",
     "moment": "^2.22.2",
+    "uuidv4": "^2.0.0",
     "vue": "^2.5.17",
     "vue-airbnb-style-datepicker": "^2.1.0",
     "vue-bootstrap-calendar": "^1.3.6",

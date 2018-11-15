@@ -109,8 +109,20 @@
                     </b-col>
                     <b-col cols="6">
                       <div v-if="selectedTypeDemande==='conge'">
-                        <date-picker v-model="dateDebVacanceDemande" :config="options"></date-picker>
-                        <date-picker v-model="dateFinVacanceDemande" :config="options"></date-picker>
+                        <date-picker v-model="demandeVac.dateDebVacanceDemande" :config="options"></date-picker>
+                        <date-picker v-model="demandeVac.dateFinVacanceDemande" :config="options"></date-picker>
+                        <textarea id="story" name="story" placeholder="commentaire"></textarea>
+                        <b-button>Envoyer</b-button>
+                      </div>
+                      <div v-if="selectedTypeDemande==='recup'">
+                        <date-picker v-model="demandeVac.dateDebVacanceDemande" :config="options"></date-picker>
+                        <date-picker v-model="demandeVac.dateFinVacanceDemande" :config="options"></date-picker>
+                        <textarea id="story" name="story" placeholder="commentaire"></textarea>
+                        <b-button>Envoyer</b-button>
+                      </div>
+                      <div v-if="selectedTypeDemande==='amenagement'">
+                        <date-picker v-model="demandeVac.dateDebVacanceDemande" :config="options"></date-picker>
+                        <date-picker v-model="demandeVac.dateFinVacanceDemande" :config="options"></date-picker>
                         <textarea id="story" name="story" placeholder="commentaire"></textarea>
                         <b-button>Envoyer</b-button>
                       </div>
@@ -151,7 +163,16 @@ export default {
         dateDebVacanceDemande:null,
         commentaire:null
       },
-      
+      demandeAmenagement:{
+        date:null,
+        heure:null,
+        commentaire:null
+      },
+      demandeRecup:{
+        dateFinRecupDemande:null,
+        dateDebRecupDemande:null,
+        commentaire:null
+      },
       contractsAffichage: null,
       selectedContract: null,
       currentContrat: null,
