@@ -1,6 +1,12 @@
 Adresse de deploiement:
 Nair0fl.github.io
-
+Salarie:
+    login : salarie
+    mdp : salarie
+Manager:
+    login : manager
+    mdp : manager
+    
 Jeudi 08/11/2018
 Objectifs journaliers :
 Réalisation des modèles de données du Salarié en simulant des réponses json à des requêtes API, plus router et connexion
