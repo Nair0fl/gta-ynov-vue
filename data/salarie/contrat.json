@@ -1,0 +1,15 @@
+[
+    {
+        "id":1,
+        "startDate":"10-04-2016",
+        "endDate":"08-31-2018",
+        "weeklyHour":35
+    },
+    {
+        "id":2,
+        "startDate":"09-08-2017",
+        "endDate":"08-31-2020",
+        "weeklyHour":35
+    }
+
+]

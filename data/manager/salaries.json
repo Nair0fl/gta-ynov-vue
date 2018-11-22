@@ -1,0 +1,144 @@
+{  
+    "users":[
+        {"id":"s1",
+    "firstname":"florian",
+    "lastname":"salarie",
+    "type":"Salaried",
+    "birthDate":"17/12/1996",
+    "adress":{
+        "zipCode":"44000",
+        "street": "rue du haut moreau",
+        "number":"36"
+    },
+    "mail":"florian.boche@ynov.com",
+    "tel":"0633891640",
+    "password":"salarie",
+    "contratEnCours":    {
+        "startDate":"09-08-2017",
+        "endDate":"08-31-2020",
+        "weeklyHour":35
+    },
+    "planning":{
+            "vacations":[
+                {
+                    "11-05-2018":{
+                    "endDate":"11-09-2018"
+                    }
+                }
+            ],
+        "absences":[
+            {
+                "11-02-2018":{
+                    "Type":"Absence Maladie",
+                    "end":"11-02-2018"
+                }
+
+
+            }
+    
+                ],
+        "presenceprevu":
+            {
+                    
+                        "startMorning":"09:00",
+                        "endMorning":"12:00",
+                        "startAfternoon":"13:00",
+                        "endAfternoon":"17:00"
+            },
+            "presencePrevuChange":[],
+            "presence":[
+                {
+                    "10-21-2018":
+                        {
+                            "startMorning":"09:00",
+                            "endMorning":"12:00",
+                            "startAfternoon":"13:00",
+                            "endAfternoon":"17:00",
+                            "nbrheure":7
+                        }
+                },
+                {
+                    "11-01-2018":
+                        {
+                            "startMorning":"08:00",
+                            "endMorning":"12:00",
+                            "startAfternoon":"13:00",
+                            "endAfternoon":"17:00",
+                            "nbrheure":7
+                        }
+                },
+                {
+                    "11-21-2018":
+                        {
+                            "startMorning":"11:00",
+                            "endMorning":"12:00",
+                            "startAfternoon":"13:00",
+                            "endAfternoon":"17:00",
+                            "nbrheure":7
+                        }
+                },
+                {
+                    "11-20-2018":
+                        {
+                            "startMorning":"10:00",
+                            "endMorning":"12:00",
+                            "startAfternoon":"13:00",
+                            "endAfternoon":"17:00",
+                            "nbrheure":7
+                        }
+                },
+                {
+                    "11-19-2018":
+                        {
+                            "startMorning":"08:15",
+                            "endMorning":"12:00",
+                            "startAfternoon":"13:00",
+                            "endAfternoon":"17:00",
+                            "nbrheure":7
+                        }
+                }
+            ]
+}},
+{  
+    "id":"s2",
+    "firstname":"salarie2",
+    "lastname":"salarie2",
+    "type":"Salaried",
+    "birthDate":"17/12/1996",
+    "adress":{
+        "zipCode":"44000",
+        "street": "rue du haut moreau",
+        "number":"36"
+    },
+    "mail":"florian.boche@ynov.com",
+    "tel":"0633891640",
+    "password":"salarie",
+    "planning":{
+        "vacations":[
+            {
+                "startDate":"11-05-2018",
+                "endDate":"11-09-2018"
+            }
+        ],
+    "absences":[
+        {
+            "Type":"Absence Maladie",
+                    "start":"11-02-201809:30",
+                    "end":"11-02-201818:00"
+        }
+
+            ],
+    "presence":
+        {
+                
+                    "startMorning":"09:00",
+                    "endMorning":"12:00",
+                    "startAfternoon":"13:00",
+                    "endAfternoon":"17:00",
+                    "nbrheure":7
+        }
+}                
+}
+
+]                  
+}
