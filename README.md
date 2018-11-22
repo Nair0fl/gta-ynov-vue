@@ -26,3 +26,11 @@ Vendredi 16/11/2018
 
 Objectifs
 Finir la partie demande d'un salarie
+Bilan : 
+La partie demande d'un employé à été effectué
+
+Jeudi 22/11/2018
+Objectifs 
+Commencer la structure des données et de la page du manager
+Bilan
+Ajout des compteurs d'heures pour les salaries, creation de la page manager, et des données. Création d'un employé, et visualisation du planning des salarie par selection de celui-ci

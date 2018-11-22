@@ -11,7 +11,7 @@
 
 <script>
 import router from "../router";
-import json from "../../data/users.json";
+import json from "../../data/all/users.json";
 
 export default {
   name: "Login",
@@ -34,7 +34,8 @@ export default {
             this.input.password === json.users[jsonindex].password
           ) {
             this.$emit("authenticated", true);
-            this.$parent.iduser= json.users[jsonindex].id;
+          
+            window.localStorage.setItem('user',JSON.stringify(json.users[jsonindex]))
             this.$router.replace({ name: json.users[jsonindex].type + "" });
           } 
         }
