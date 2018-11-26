@@ -1,11 +1,10 @@
 {
-    "absences":[
-        {
-            "Type":"Absence Maladie",
-                    "start":"11-02-201809:30",
-                    "end":"11-02-201818:00"
+    "absences": [{
+            "11-02-2018": {
+                "Type": "Absence Maladie",
+                "end": "11-02-2018"
+            }
         }
 
-            ]
-        }
-    
+    ]
+}

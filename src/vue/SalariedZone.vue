@@ -5,7 +5,7 @@
 
   <b-navbar-toggle  target="nav_collapse"></b-navbar-toggle>
 
-  <b-navbar-brand  href="#">NavBar</b-navbar-brand>
+  <b-navbar-brand  href="#">{{user.firstname +" "+ user.lastname}}</b-navbar-brand>
 
   <b-collapse  is-nav id="nav_collapse">
 
@@ -25,9 +25,6 @@
   </b-collapse>
 </b-navbar>
         </div>
-    <b-row>
-      <b-col cols="12"	sm="12"	md="12"	lg="12"	xl="12"><h1>Bonjour {{user.firstname +" "+ user.lastname}}</h1></b-col>
-    </b-row>
     <b-row>
       <b-col cols="12"	sm="12"	md="12"	lg="12"	xl="12">
             <b-card no-body>
@@ -97,7 +94,7 @@
                   <b-tab title="Planning" >
                     <b-row>
                       <b-col cols="12">
-                               <calendar :contrat="currentContrat"></calendar>
+                               <calendar :newConge="newConge" :contrat="currentContrat"></calendar>
 
                       </b-col>
                     </b-row>
@@ -139,11 +136,11 @@
                         <date-picker v-model="demandeVac.dateDebVacanceDemande" :config="options"></date-picker>
                         <date-picker v-model="demandeVac.dateFinVacanceDemande" :config="options"></date-picker>
                         <textarea id="story" name="story" placeholder="commentaire"></textarea>
-                        <b-button>Envoyer</b-button>
+                        <b-button v-on:click="addConge">Envoyer</b-button>
                       </div>
                       <div v-if="selectedTypeDemande==='recup'">
-                        <date-picker v-model="demandeVac.dateDebVacanceDemande" :config="options"></date-picker>
-                        <date-picker v-model="demandeVac.dateFinVacanceDemande" :config="options"></date-picker>
+                        <date-picker v-model="demandeRecup.dateFinRecupDemande" :config="options"></date-picker>
+                        <date-picker v-model="demandeRecup.dateDebRecupDemande" :config="options"></date-picker>
                         <textarea id="story" name="story" placeholder="commentaire"></textarea>
                         <b-button>Envoyer</b-button>
                       </div>
@@ -198,6 +195,7 @@ export default {
       selectedContract: null,
       currentContrat: null,
       soldeConge: null,
+      newConge:[],
       totalConge:null,
       compteurAnnuelle:0,
       compteurMensuelle:0,
@@ -224,16 +222,16 @@ export default {
       this.getcompteur("month")
       this.getcompteur("year")
 
-      for (var contrat in this.contracts) {
+      this.contracts.map((contrat) =>{
         
 
-        var end = moment(this.contracts[contrat].endDate).format("DD-MM-YYYY");
+        var end = moment(contrat.endDate).format("DD-MM-YYYY");
         if (
           moment(end, "DD-MM-YYYY")
             .fromNow()
             .includes("in")
         ) {
-          this.currentContrat = this.contracts[contrat];
+          this.currentContrat = contrat;
           this.contractsAffichage=[this.currentContrat]
           var year = moment().format("YYYY");
           var yeardiff = moment().diff(moment("01-01-" + year), "month");
@@ -242,14 +240,14 @@ export default {
             diff = yeardiff;
           } else {
             diff = moment().diff(
-              moment(this.contracts[contrat].startDate),
+              moment(contrat.startDate),
               "months"
             );
           }
           this.totalConge= Math.ceil(diff * 2.08)
           this.soldeConge = this.totalConge- vacationUser.totalPrit;
         }
-      }
+      })
     });
   },
   methods: {
@@ -296,6 +294,21 @@ export default {
     },
     changeInformation(){
       //Call APi with new Change
+    },
+    addConge(){
+      //Call API
+      let start=moment(this.demandeVac.dateDebVacanceDemande+"00:00","MM-DD-YYYYHH:mm")
+      let end=moment(this.demandeVac.dateFinVacanceDemande+"23:59","MM-DD-YYYYHH:mm")
+      let dss=moment.duration(end.diff(start));
+      let nbrDay = (dss/(1000*60*60*24))
+      if(this.soldeConge-nbrDay>=0){
+      this.newConge.push({    title:"CongeEncours",
+      start:start,
+       end:end,
+      })
+      this.soldeConge-=Math.ceil(nbrDay)
+      }
+
     }
   }
 };

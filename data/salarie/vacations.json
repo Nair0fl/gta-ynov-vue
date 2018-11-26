@@ -1,10 +1,10 @@
 {
-    "totalPrit":2,
-    "vacations":[
-    {
-        "startDate":"11-05-2018",
-        "endDate":"11-09-2018"
-    }
-]
+    "totalPrit": 2,
+    "vacations": [{
+        "11-05-2018" :{
+            "endDate": "11-09-2018"
+
+        }
+    }]
 
 }

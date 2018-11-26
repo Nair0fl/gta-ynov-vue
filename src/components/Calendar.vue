@@ -21,14 +21,14 @@ import "fullcalendar/dist/fullcalendar.css";
 import vacationUser from "../../data/salarie/vacations.json";
 import absence from "../../data/salarie/absence.json";
 
-let horraires = [];
+let horrairesChange = [];
 let eventsAttenteValidation = [];
 let tovalidate=[]
 let vacations=[]
 let absences=[]
 
 planning.hours.forEach((element) => {
-  const key = Object.keys(element)[0];
+  let key = Object.keys(element)[0];
   const elemMorning = {
     title: key+ ` Morning`,
     start: moment(key+element[key].startMorning,"MM-DD-YYYYHH:mm"),
@@ -43,14 +43,15 @@ planning.hours.forEach((element) => {
     editable:false
 
   };
-  horraires.push(elemMorning, elemAfternoon);
+  horrairesChange.push(elemMorning, elemAfternoon);
 });
 
 vacationUser.vacations.forEach((element)=>{
-  const elementVacance={
+    let key = Object.keys(element)[0];
+    const elementVacance={
     title:'Vacance',
-    start:moment(element.startDate,"MM-DD-YYYY"),
-    end:moment(element.endDate,"MM-DD-YYYY"),
+    start:moment(key,"MM-DD-YYYY"),
+    end:moment(element[key].endDate,"MM-DD-YYYY").add(1,"days"),
     color: '#378006',
 editable:false
   }
@@ -58,36 +59,49 @@ editable:false
 })
 
 absence.absences.forEach((element)=>{
+  let key = Object.keys(element)[0];
   const elementAbsence={
-    title:element.Type,
-    start:moment(element.start,"MM-DD-YYYYHH:mm"),
-    end:moment(element.end,"MM-DD-YYYYHH:mm"),
+    title:element[key].Type,
+    start:moment(key,"MM-DD-YYYYHH:mm"),
+    end:moment(element[key].end,"MM-DD-YYYYHH:mm"),
     color: '#FF0000',
 editable:false
   }
   absences.push(elementAbsence)
 })
 
-let allevent=horraires.concat(absences).concat(vacations).concat(eventsAttenteValidation).concat(tovalidate)
+
+let allevent=horrairesChange.concat(absences).concat(vacations).concat(eventsAttenteValidation).concat(tovalidate)
 
 export default {
   name: 'calendar',
   data() {
     return {
       modification : null,
-      events:allevent,
+      events:allevent.concat(this.newConge),
+      test:null,
       config: {
         defaultView: 'month',
+        locale: 'fr'
       },
     };
   },
-  props:['contrat'],
+  props:['contrat','newConge'],
   computed:{
   },
+  watch: { 
+        newConge: function(newVal, oldVal) { // watch it
+        alert(1)
+         this.newConge.map(conge=>{ eventsAttenteValidation.push(conge)
+         this.events.push(conge)
+         })
+         console.log(eventsAttenteValidation)
+        }},
   mounted: function() {
     let actuel=moment()
+    console.log(this.contrat.endDate)
     while(actuel.isBefore(moment(this.contrat.endDate,"MM-DD-YYYY"))){
-      if(actuel.day()<5){
+      if(actuel.day()<6&&actuel.day()>0){
         allevent.push({    title:"Horraire prévu matin",
     start:moment(actuel.format("MM-DD-YYYY")+"09:00","MM-DD-YYYYHH:mm"),
     end:moment(actuel.format("MM-DD-YYYY")+"12:00","MM-DD-YYYYHH:mm"),
@@ -108,7 +122,7 @@ export default {
         let element = { title : key , start : valReturn.start, end : valReturn.end, color: '#FF7F50'	}
         _.remove(eventsAttenteValidation, x => x.title === key)
         _.remove(tovalidate, x => x.title === key)
-        _.remove(horraires, x => x.title === key)
+        _.remove(horrairesChange, x => x.title === key)
         _.remove(this.events, x => x.title === key)
         this.events.push(element)
         eventsAttenteValidation.push(element)

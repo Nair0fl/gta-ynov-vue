@@ -5,7 +5,7 @@
             <b-card no-body>
                 <b-tabs card>
                     <b-tab  title="Ajouter salarié" active>
-                            <b-col cols="12"	sm="5"	md="12"	lg="12"	xl="12">
+                            <b-col cols="12"	sm="12"	md="12"	lg="12"	xl="12">
                                 <b-form-group id="firstname"
                                 label="Prénom:"
                                 label-for="firstnameInput"
@@ -17,8 +17,7 @@
                                     placeholder="Enter firstname"></b-form-input>
                                 </b-form-group>
                             </b-col>
-                                                        <b-col cols="12"	sm="5"	md="12"	lg="12"	xl="12">
-
+                            <b-col cols="12"	sm="12"	md="12"	lg="12"	xl="12">
                             <b-form-group id="lastname"
                                 label="Nom:"
                                 label-for="lastnameInput">
@@ -29,7 +28,7 @@
                                     placeholder="Enter lastname"></b-form-input>
                                 </b-form-group>
                             </b-col>
-                            <b-col 	sm="5">
+                            <b-col cols="12"	sm="12"	md="12"	lg="12"	xl="12">
                                 <b-form-group id="mailAdresseLabel"
                                 label="Email address:"
                                 label-for="mailAdresseInput"
@@ -41,7 +40,7 @@
                                     placeholder="Enter email"></b-form-input>
                                 </b-form-group>
                             </b-col>
-                            <b-col  cols="12"	sm="5"	md="12"	lg="12"	xl="12">
+                            <b-col cols="12"	sm="12"	md="12"	lg="12"	xl="12">
                                 <b-form-group id="telLabel"
                                 label="Téléphone :"
                                 label-for="telInput">
@@ -50,7 +49,7 @@
                                     </b-form-input>
                                 </b-form-group>
                             </b-col>
-                            <b-col cols="12"	sm="5"	md="12"	lg="12"	xl="12">
+                            <b-col cols="12"	sm="12"	md="12"	lg="12"	xl="12">
                                 <b-form-group id="AdresseLabel"
                                 label="Adresse:"
                                 label-for="AdresseInput">
@@ -62,7 +61,7 @@
                                     </b-form-input>
                                 </b-form-group>
                             </b-col>
-                            <b-col cols="12"	sm="5"	md="12"	lg="12"	xl="12">
+                            <b-col cols="12"	sm="12"	md="12"	lg="12"	xl="12">
                                 <b-form-group id="ZipCodeLabel"
                                 label="ZipCode:"
                                 label-for="ZipCodeInput">
@@ -74,7 +73,7 @@
                                     </b-form-input>
                                 </b-form-group>
                             </b-col>
-                            <b-col cols="12"	sm="5"	md="12"	lg="12"	xl="12">
+                            <b-col cols="12"	sm="12"	md="12"	lg="12"	xl="12">
                                 <b-form-group id="numberLabel"
                                 label="number:"
                                 label-for="numberInput">
@@ -136,7 +135,24 @@ export default {
   },
   methods:{
       newSalarie(){
-             this.salarieResponsable.push(this.NewUser)
+             var test={
+                id :this.NewUser.id,
+             firstname:this.NewUser.firstname,
+             lastname:this.NewUser.lastname,
+             birthDate:this.NewUser.birthDate,
+             adress:{
+             zipCode:this.NewUser.adress.zipCode,
+             street:this.NewUser.adress.street,
+             number:this.NewUser.adress.number,
+             },
+
+             mail:this.NewUser.mail,
+             tel:this.NewUser.tel,
+             }
+
+                 this.NewUser
+             this.salarieResponsable.push(test)
+             console.log(salarieResponsable)
              this.NewUser.id=uuidv4()
              this.NewUser.firstname=null
              this.NewUser.lastname=null
